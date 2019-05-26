@@ -16,6 +16,7 @@
 		9B24D733229AB8B600ACE98B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B24D732229AB8B600ACE98B /* main.m */; };
 		9B24D73D229AB8B600ACE98B /* MovieSelectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B24D73C229AB8B600ACE98B /* MovieSelectorTests.m */; };
 		9B24D748229AB8B600ACE98B /* MovieSelectorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B24D747229AB8B600ACE98B /* MovieSelectorUITests.m */; };
+		9B24D757229B43C900ACE98B /* MovieSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B24D756229B43C900ACE98B /* MovieSelectorViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		9B24D743229AB8B600ACE98B /* MovieSelectorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieSelectorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B24D747229AB8B600ACE98B /* MovieSelectorUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieSelectorUITests.m; sourceTree = "<group>"; };
 		9B24D749229AB8B600ACE98B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B24D755229B43C900ACE98B /* MovieSelectorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieSelectorViewController.h; sourceTree = "<group>"; };
+		9B24D756229B43C900ACE98B /* MovieSelectorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieSelectorViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,8 @@
 				9B24D721229AB8B300ACE98B /* AppDelegate.m */,
 				9B24D723229AB8B300ACE98B /* ViewController.h */,
 				9B24D724229AB8B300ACE98B /* ViewController.m */,
+				9B24D755229B43C900ACE98B /* MovieSelectorViewController.h */,
+				9B24D756229B43C900ACE98B /* MovieSelectorViewController.m */,
 				9B24D726229AB8B300ACE98B /* Main.storyboard */,
 				9B24D72C229AB8B600ACE98B /* Assets.xcassets */,
 				9B24D72E229AB8B600ACE98B /* LaunchScreen.storyboard */,
@@ -267,6 +272,7 @@
 			files = (
 				9B24D72B229AB8B300ACE98B /* MovieSelector.xcdatamodeld in Sources */,
 				9B24D725229AB8B300ACE98B /* ViewController.m in Sources */,
+				9B24D757229B43C900ACE98B /* MovieSelectorViewController.m in Sources */,
 				9B24D733229AB8B600ACE98B /* main.m in Sources */,
 				9B24D722229AB8B300ACE98B /* AppDelegate.m in Sources */,
 			);
