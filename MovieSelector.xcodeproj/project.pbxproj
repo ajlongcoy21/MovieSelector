@@ -17,6 +17,9 @@
 		9B24D73D229AB8B600ACE98B /* MovieSelectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B24D73C229AB8B600ACE98B /* MovieSelectorTests.m */; };
 		9B24D748229AB8B600ACE98B /* MovieSelectorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B24D747229AB8B600ACE98B /* MovieSelectorUITests.m */; };
 		9B24D757229B43C900ACE98B /* MovieSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B24D756229B43C900ACE98B /* MovieSelectorViewController.m */; };
+		9B24D75A229B54D700ACE98B /* Genre.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B24D759229B54D700ACE98B /* Genre.m */; };
+		9B24D75D229B58BC00ACE98B /* ViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 9B24D723229AB8B300ACE98B /* ViewController.h */; };
+		9B24D764229B7E1400ACE98B /* MovieAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B24D763229B7E1400ACE98B /* MovieAPIClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,10 @@
 		9B24D749229AB8B600ACE98B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B24D755229B43C900ACE98B /* MovieSelectorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieSelectorViewController.h; sourceTree = "<group>"; };
 		9B24D756229B43C900ACE98B /* MovieSelectorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieSelectorViewController.m; sourceTree = "<group>"; };
+		9B24D758229B54D700ACE98B /* Genre.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Genre.h; sourceTree = "<group>"; };
+		9B24D759229B54D700ACE98B /* Genre.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Genre.m; sourceTree = "<group>"; };
+		9B24D762229B7E1400ACE98B /* MovieAPIClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieAPIClient.h; sourceTree = "<group>"; };
+		9B24D763229B7E1400ACE98B /* MovieAPIClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieAPIClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,12 +113,11 @@
 		9B24D71F229AB8B300ACE98B /* MovieSelector */ = {
 			isa = PBXGroup;
 			children = (
+				9B24D75E229B7AB200ACE98B /* Network */,
+				9B24D75C229B54F500ACE98B /* ViewControllers */,
+				9B24D75B229B54E300ACE98B /* Models */,
 				9B24D720229AB8B300ACE98B /* AppDelegate.h */,
 				9B24D721229AB8B300ACE98B /* AppDelegate.m */,
-				9B24D723229AB8B300ACE98B /* ViewController.h */,
-				9B24D724229AB8B300ACE98B /* ViewController.m */,
-				9B24D755229B43C900ACE98B /* MovieSelectorViewController.h */,
-				9B24D756229B43C900ACE98B /* MovieSelectorViewController.m */,
 				9B24D726229AB8B300ACE98B /* Main.storyboard */,
 				9B24D72C229AB8B600ACE98B /* Assets.xcassets */,
 				9B24D72E229AB8B600ACE98B /* LaunchScreen.storyboard */,
@@ -138,6 +144,35 @@
 				9B24D749229AB8B600ACE98B /* Info.plist */,
 			);
 			path = MovieSelectorUITests;
+			sourceTree = "<group>";
+		};
+		9B24D75B229B54E300ACE98B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9B24D758229B54D700ACE98B /* Genre.h */,
+				9B24D759229B54D700ACE98B /* Genre.m */,
+				9B24D762229B7E1400ACE98B /* MovieAPIClient.h */,
+				9B24D763229B7E1400ACE98B /* MovieAPIClient.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9B24D75C229B54F500ACE98B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9B24D723229AB8B300ACE98B /* ViewController.h */,
+				9B24D724229AB8B300ACE98B /* ViewController.m */,
+				9B24D755229B43C900ACE98B /* MovieSelectorViewController.h */,
+				9B24D756229B43C900ACE98B /* MovieSelectorViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9B24D75E229B7AB200ACE98B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,9 +305,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B24D75D229B58BC00ACE98B /* ViewController.h in Sources */,
 				9B24D72B229AB8B300ACE98B /* MovieSelector.xcdatamodeld in Sources */,
 				9B24D725229AB8B300ACE98B /* ViewController.m in Sources */,
 				9B24D757229B43C900ACE98B /* MovieSelectorViewController.m in Sources */,
+				9B24D764229B7E1400ACE98B /* MovieAPIClient.m in Sources */,
+				9B24D75A229B54D700ACE98B /* Genre.m in Sources */,
 				9B24D733229AB8B600ACE98B /* main.m in Sources */,
 				9B24D722229AB8B300ACE98B /* AppDelegate.m in Sources */,
 			);

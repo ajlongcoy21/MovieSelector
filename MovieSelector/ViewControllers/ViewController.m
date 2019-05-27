@@ -32,6 +32,12 @@
     // Add flash animaiton to the button
     
     [_movieSelectorButton.layer addAnimation:flash forKey:nil];
+    
+    // Add button title label constraints to make the button fit on all phone models
+    
+    _movieSelectorButton.titleLabel.numberOfLines = 1;
+    _movieSelectorButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    _movieSelectorButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
 
 }
 
