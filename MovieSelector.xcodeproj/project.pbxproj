@@ -20,6 +20,8 @@
 		9B24D75A229B54D700ACE98B /* Genre.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B24D759229B54D700ACE98B /* Genre.m */; };
 		9B24D75D229B58BC00ACE98B /* ViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 9B24D723229AB8B300ACE98B /* ViewController.h */; };
 		9B24D764229B7E1400ACE98B /* MovieAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B24D763229B7E1400ACE98B /* MovieAPIClient.m */; };
+		9BF570A8229CBE3F006D20EC /* GenreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF570A7229CBE3F006D20EC /* GenreTableViewController.m */; };
+		9BF570AB229CCA9A006D20EC /* GenreCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF570AA229CCA9A006D20EC /* GenreCellTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,10 @@
 		9B24D759229B54D700ACE98B /* Genre.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Genre.m; sourceTree = "<group>"; };
 		9B24D762229B7E1400ACE98B /* MovieAPIClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieAPIClient.h; sourceTree = "<group>"; };
 		9B24D763229B7E1400ACE98B /* MovieAPIClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieAPIClient.m; sourceTree = "<group>"; };
+		9BF570A6229CBE3F006D20EC /* GenreTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenreTableViewController.h; sourceTree = "<group>"; };
+		9BF570A7229CBE3F006D20EC /* GenreTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenreTableViewController.m; sourceTree = "<group>"; };
+		9BF570A9229CCA9A006D20EC /* GenreCellTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenreCellTableViewCell.h; sourceTree = "<group>"; };
+		9BF570AA229CCA9A006D20EC /* GenreCellTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenreCellTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +159,8 @@
 				9B24D759229B54D700ACE98B /* Genre.m */,
 				9B24D762229B7E1400ACE98B /* MovieAPIClient.h */,
 				9B24D763229B7E1400ACE98B /* MovieAPIClient.m */,
+				9BF570A9229CCA9A006D20EC /* GenreCellTableViewCell.h */,
+				9BF570AA229CCA9A006D20EC /* GenreCellTableViewCell.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -164,6 +172,8 @@
 				9B24D724229AB8B300ACE98B /* ViewController.m */,
 				9B24D755229B43C900ACE98B /* MovieSelectorViewController.h */,
 				9B24D756229B43C900ACE98B /* MovieSelectorViewController.m */,
+				9BF570A6229CBE3F006D20EC /* GenreTableViewController.h */,
+				9BF570A7229CBE3F006D20EC /* GenreTableViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -308,6 +318,8 @@
 				9B24D75D229B58BC00ACE98B /* ViewController.h in Sources */,
 				9B24D72B229AB8B300ACE98B /* MovieSelector.xcdatamodeld in Sources */,
 				9B24D725229AB8B300ACE98B /* ViewController.m in Sources */,
+				9BF570AB229CCA9A006D20EC /* GenreCellTableViewCell.m in Sources */,
+				9BF570A8229CBE3F006D20EC /* GenreTableViewController.m in Sources */,
 				9B24D757229B43C900ACE98B /* MovieSelectorViewController.m in Sources */,
 				9B24D764229B7E1400ACE98B /* MovieAPIClient.m in Sources */,
 				9B24D75A229B54D700ACE98B /* Genre.m in Sources */,

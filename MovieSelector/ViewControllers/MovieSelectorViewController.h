@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Genre.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MovieSelectorViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *movieLoverOneButton;
 @property (weak, nonatomic) IBOutlet UIButton *movieLoverTwoButton;
+@property (strong, nonatomic) NSMutableArray *movieGenres;
 
 @end
 
