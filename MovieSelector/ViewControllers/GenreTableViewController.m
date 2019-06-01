@@ -57,9 +57,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // obtain the selected cell
+    
     GenreCellTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
-    [cell.bubbleImage setImage:[UIImage imageNamed:@"CircleChecked"]];
+    // change the cell image
+    
+    NSData *image1 = UIImagePNGRepresentation(cell.bubbleImage.image);
+    NSData *image2 = UIImagePNGRepresentation([UIImage imageNamed:@"CircleChecked"]);
+    
+    if ([image1 isEqual:image2])
+    {
+        [cell.bubbleImage setImage:[UIImage imageNamed:@"CircleEmpty"]];
+    }
+    else
+    {
+        [cell.bubbleImage setImage:[UIImage imageNamed:@"CircleChecked"]];
+    }
+    
+    // reload the table to show the changes
     
     [self.tableView reloadData];
     
