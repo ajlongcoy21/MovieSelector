@@ -55,6 +55,17 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    GenreCellTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    [cell.bubbleImage setImage:[UIImage imageNamed:@"CircleChecked"]];
+    
+    [self.tableView reloadData];
+    
+    
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
