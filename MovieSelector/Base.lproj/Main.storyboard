@@ -78,7 +78,6 @@
                                 <state key="normal" image="BubbleEmpty"/>
                                 <connections>
                                     <action selector="movieLoverInput:" destination="XfL-Qn-VQA" eventType="touchUpInside" id="2lo-FP-G5q"/>
-                                    <segue destination="2zE-GD-adG" kind="show" identifier="showGenreTableView" id="YtQ-J1-Ft1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -99,13 +98,14 @@
                     <connections>
                         <outlet property="movieLoverOneButton" destination="xPz-iu-nSS" id="PfS-Ed-pUi"/>
                         <outlet property="movieLoverTwoButton" destination="O1Y-kQ-STE" id="7zx-p6-Vzb"/>
+                        <segue destination="2zE-GD-adG" kind="show" identifier="showGenreTableView" id="sm9-ED-5U6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZXi-1X-Bf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2194" y="94"/>
+            <point key="canvasLocation" x="2085.507246376812" y="93.75"/>
         </scene>
-        <!--Genre Table View Controller-->
+        <!--GENRES-->
         <scene sceneID="seN-mD-wIj">
             <objects>
                 <tableViewController id="2zE-GD-adG" customClass="GenreTableViewController" sceneMemberID="viewController">
@@ -114,7 +114,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="GenreCell" rowHeight="114" id="1Sb-qh-kVq" customClass="GenreCellTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="GenreCell" rowHeight="114" id="1Sb-qh-kVq" customClass="GenreCellTableViewCell">
                                 <rect key="frame" x="0.0" y="28" width="414" height="114"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Sb-qh-kVq" id="dq1-HB-nlN">
@@ -157,11 +157,11 @@
                             <outlet property="delegate" destination="2zE-GD-adG" id="htt-hI-QWu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="UH2-ty-cxO"/>
+                    <navigationItem key="navigationItem" title="GENRES" id="UH2-ty-cxO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6N-PM-KlM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3140.579710144928" y="93.75"/>
+            <point key="canvasLocation" x="2906" y="94"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XZc-36-NdN">

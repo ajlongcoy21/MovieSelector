@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GenreTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray *genres;
+@property (strong, nonatomic) NSMutableArray *selections;
+@property (strong, nonatomic) NSNumber *movieLover;
 
 @end
 

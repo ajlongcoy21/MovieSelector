@@ -9,6 +9,7 @@
 #import "GenreTableViewController.h"
 #import "Genre.h"
 #import "GenreCellTableViewCell.h"
+#import "MovieSelectorViewController.h"
 
 @interface GenreTableViewController ()
 
@@ -21,6 +22,7 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.hidden = NO;
+    self.selections = [NSMutableArray array];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -61,7 +63,7 @@
     
     GenreCellTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
-    // change the cell image
+    // change the cell image by detecting which image it is and changing to the other image
     
     NSData *image1 = UIImagePNGRepresentation(cell.bubbleImage.image);
     NSData *image2 = UIImagePNGRepresentation([UIImage imageNamed:@"CircleChecked"]);
@@ -69,18 +71,21 @@
     if ([image1 isEqual:image2])
     {
         [cell.bubbleImage setImage:[UIImage imageNamed:@"CircleEmpty"]];
+        [self.selections removeObject: [self.genres objectAtIndex:indexPath.row]];
     }
     else
     {
         [cell.bubbleImage setImage:[UIImage imageNamed:@"CircleChecked"]];
+        [self.selections addObject: [self.genres objectAtIndex:indexPath.row]];
     }
     
     // reload the table to show the changes
     
     [self.tableView reloadData];
     
-    
 }
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -89,8 +94,27 @@
     // check if the back button was pressed
     if (self.isMovingFromParentViewController)
     {
-        // do something here if that's the case
+        // hide navigation bar
+        
         self.navigationController.navigationBar.hidden = YES;
+        
+        // Connect to the movie selection view controller to pass back the variables
+        
+        MovieSelectorViewController *movieSelectorController = (MovieSelectorViewController *)self.navigationController.topViewController;
+        
+        // pass back the selections for the correct movie lover
+        
+        if ([_movieLover intValue] == 1)
+        {
+            movieSelectorController.movieLoverOneSelections = self.selections;
+            [movieSelectorController.movieLoverOneButton setImage:[UIImage imageNamed:@"BubbleSelected"] forState:UIControlStateNormal];
+        }
+        else if ([_movieLover intValue] == 2)
+        {
+            movieSelectorController.movieLoverTwoSelections = self.selections;
+            [movieSelectorController.movieLoverTwoButton setImage:[UIImage imageNamed:@"BubbleSelected"] forState:UIControlStateNormal];
+        }
+        
     }
 }
 /*

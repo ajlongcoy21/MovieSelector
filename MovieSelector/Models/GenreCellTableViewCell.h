@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UIImageView *bubbleImage;
 @property (weak, nonatomic) IBOutlet UILabel *genreLabel;
+@property (weak, nonatomic) NSNumber *genreID;
 
 
 @end

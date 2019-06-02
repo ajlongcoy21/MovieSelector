@@ -27,4 +27,10 @@
     return genre;
 }
 
+- (void) printGenre
+{
+    NSLog(@"\nGenre Name: %@\nGenre ID: %i", self.name, self.genreID.intValue);
+    
+}
+
 @end

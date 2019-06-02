@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *genreID;
 
 + (instancetype) genreWithDictionary:(NSDictionary *) dictionary;
-
+- (void) printGenre;
 @end
 
 NS_ASSUME_NONNULL_END
