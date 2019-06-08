@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Genre.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,7 @@ extern NSString *const apiKey;
 extern NSString *const baseURL;
 
 +(NSURL *) getMovieGenreURL;
+//+(NSURL *) discoverMovieURL:(Genre []) genreList;
 
 @end
 

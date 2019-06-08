@@ -22,10 +22,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNS-vW-jWm">
-                                <rect key="frame" x="47" y="238" width="320" height="58"/>
+                                <rect key="frame" x="47" y="238" width="320" height="53"/>
                                 <color key="backgroundColor" red="0.2692340612411499" green="0.12571361660957336" blue="0.1215619221329689" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
-                                <state key="normal" title="MOVIE SELECTOR">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                <state key="normal" title="  MOVIE SELECTOR  ">
                                     <color key="titleColor" red="0.94117647059999998" green="0.81960784310000001" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -80,15 +80,34 @@
                                     <action selector="movieLoverInput:" destination="XfL-Qn-VQA" eventType="touchUpInside" id="2lo-FP-G5q"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eqc-yV-zgW">
+                                <rect key="frame" x="20" y="792" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.44873559474945068" green="0.20043346285820007" blue="0.19214391708374023" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QXo-fI-8tI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
+                                <state key="normal" title="     VIEW RESULTS     ">
+                                    <color key="titleColor" red="0.92141103744506836" green="0.82249170541763306" blue="0.47442948818206787" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xPz-iu-nSS" firstAttribute="leading" secondItem="xj6-Xm-A2C" secondAttribute="leading" constant="20" id="1bh-jS-i67"/>
                             <constraint firstItem="wRg-8W-SMs" firstAttribute="leading" secondItem="xj6-Xm-A2C" secondAttribute="leading" id="9Op-6b-jP4"/>
+                            <constraint firstItem="xj6-Xm-A2C" firstAttribute="trailing" secondItem="Eqc-yV-zgW" secondAttribute="trailing" constant="20" id="EFD-ba-4IB"/>
                             <constraint firstItem="xPz-iu-nSS" firstAttribute="centerY" secondItem="UeK-vm-TYR" secondAttribute="centerY" id="TSK-zq-F1g"/>
                             <constraint firstItem="wRg-8W-SMs" firstAttribute="top" secondItem="xj6-Xm-A2C" secondAttribute="top" id="cyd-fB-Wez"/>
                             <constraint firstItem="xj6-Xm-A2C" firstAttribute="bottom" secondItem="wRg-8W-SMs" secondAttribute="bottom" id="flg-kf-t0J"/>
                             <constraint firstItem="xj6-Xm-A2C" firstAttribute="trailing" secondItem="wRg-8W-SMs" secondAttribute="trailing" id="gWy-gl-EcC"/>
+                            <constraint firstItem="xj6-Xm-A2C" firstAttribute="bottom" secondItem="Eqc-yV-zgW" secondAttribute="bottom" constant="20" id="iSa-Gj-5UL"/>
+                            <constraint firstItem="Eqc-yV-zgW" firstAttribute="leading" secondItem="xj6-Xm-A2C" secondAttribute="leading" constant="20" id="sZq-WR-Do1"/>
                             <constraint firstItem="xj6-Xm-A2C" firstAttribute="trailing" secondItem="O1Y-kQ-STE" secondAttribute="trailing" constant="20" id="xrC-0c-ukc"/>
                             <constraint firstItem="O1Y-kQ-STE" firstAttribute="centerY" secondItem="UeK-vm-TYR" secondAttribute="centerY" id="yes-Eg-shT"/>
                         </constraints>
