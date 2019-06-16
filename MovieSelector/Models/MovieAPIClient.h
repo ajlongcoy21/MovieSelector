@@ -17,7 +17,7 @@ extern NSString *const apiKey;
 extern NSString *const baseURL;
 
 +(NSURL *) getMovieGenreURL;
-//+(NSURL *) discoverMovieURL:(Genre []) genreList;
++(NSURL *) discoverMovieURL:(NSMutableArray *) genreList;
 
 @end
 

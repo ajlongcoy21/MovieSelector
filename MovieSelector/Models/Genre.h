@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype) genreWithDictionary:(NSDictionary *) dictionary;
 - (void) printGenre;
+
 @end
 
 NS_ASSUME_NONNULL_END

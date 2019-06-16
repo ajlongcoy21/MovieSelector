@@ -9,6 +9,7 @@
 #import "MovieSelectorViewController.h"
 #import "MovieAPIClient.h"
 #import "Genre.h"
+#import "Movie.h"
 #import "GenreTableViewController.h"
 
 @interface MovieSelectorViewController ()
@@ -40,10 +41,6 @@
 
 - (IBAction)movieLoverInput:(id)sender
 {
-        // debug code
-    
-        [self printGenreLists];
-    
         // Create a URL Session and the URL needed for Movie Genre List
     
         NSURLSession *session = [NSURLSession sharedSession];
@@ -78,7 +75,11 @@
             
             dispatch_async(dispatch_get_main_queue(), ^
             {
-                [self performSegueWithIdentifier: @"showGenreTableView" sender: sender];
+                if ([self shouldPerformSegueWithIdentifier:@"showGenreTableView" sender: sender])
+                {
+                    [self performSegueWithIdentifier: @"showGenreTableView" sender: sender];
+                }
+                
             });
             
         }];
@@ -88,10 +89,82 @@
         [task resume];
 }
 
+- (IBAction)getMovieSelections:(id)sender
+{
+    NSMutableArray *movieGenreSelections = [NSMutableArray array];
+    
+    [movieGenreSelections addObjectsFromArray:_movieLoverOneSelections];
+    [movieGenreSelections addObjectsFromArray:_movieLoverTwoSelections];
+    
+    // Create a URL Session and the URL needed for Movie Genre List
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURL *url = [MovieAPIClient discoverMovieURL: movieGenreSelections];
+    
+    NSLog(@"URL: %@", url.absoluteString);
+    
+    // Instantiate movieResults Array
+    
+    self.movieResults = [NSMutableArray array];
+    
+    // Create the download task for with the created discoverMovieURL
+    
+    NSURLSessionDownloadTask *task = [session downloadTaskWithURL:url completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error)
+          {
+              // Create the data dictionary objects to pull the information from
+              
+              NSData *data = [[NSData alloc] initWithContentsOfURL:location];
+              NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+              
+              // Create the array of dictionaries with Movie structure
+              
+              NSArray *dictionaries = [dictionary valueForKey:@"results"];
+              
+              // For each dictionary in the array create the Movie Object and add to the Movie array
+              
+              for (NSDictionary *dict in dictionaries)
+              {
+                  Movie *movie = [Movie movieWithDictionary:dict];
+                  [self.movieResults addObject:movie];
+              }
+              
+              // Once we retrieve the data perform the segue to the tableview
+              
+              dispatch_async(dispatch_get_main_queue(), ^
+                 {
+                     for (Movie *eachMovie in self.movieResults)
+                     {
+                         [eachMovie printMovie];
+                     }
+                     
+                 });
+          }];
+    
+    // resume download task
+    
+    [task resume];
+    
+}
 
 
 
 #pragma mark - Navigation
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender;
+{
+    if (((UIButton *) sender).tag == 1 && _movieLoverOneSelections.count > 0 && [identifier isEqualToString:@"showGenreTableView"])
+    {
+        return false;
+    }
+    else if (((UIButton *) sender).tag == 2 && _movieLoverTwoSelections.count > 0 && [identifier isEqualToString:@"showGenreTableView"])
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -139,6 +212,18 @@
     {
         [genreFromList2 printGenre];
     }
+}
+
+- (void)noMovieLoverSelection
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Selection" message:@"Please choose at least 1 movie genre you would like to watch." preferredStyle:UIAlertControllerStyleAlert];
+    
+    //We add buttons to the alert controller by creating UIAlertActions:
+    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:nil]; //You can use a block here to handle a press on this button
+    [alertController addAction:actionOk];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 

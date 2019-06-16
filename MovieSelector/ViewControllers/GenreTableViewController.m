@@ -107,12 +107,29 @@
         if ([_movieLover intValue] == 1)
         {
             movieSelectorController.movieLoverOneSelections = self.selections;
-            [movieSelectorController.movieLoverOneButton setImage:[UIImage imageNamed:@"BubbleSelected"] forState:UIControlStateNormal];
+            
+            if (self.selections.count > 0)
+            {
+                [movieSelectorController.movieLoverOneButton setImage:[UIImage imageNamed:@"BubbleSelected"] forState:UIControlStateNormal];
+            }
+            else
+            {
+                [movieSelectorController noMovieLoverSelection];
+            }
+            
         }
         else if ([_movieLover intValue] == 2)
         {
             movieSelectorController.movieLoverTwoSelections = self.selections;
-            [movieSelectorController.movieLoverTwoButton setImage:[UIImage imageNamed:@"BubbleSelected"] forState:UIControlStateNormal];
+            
+            if (self.selections.count > 0)
+            {
+                [movieSelectorController.movieLoverTwoButton setImage:[UIImage imageNamed:@"BubbleSelected"] forState:UIControlStateNormal];
+            }
+            else
+            {
+                [movieSelectorController noMovieLoverSelection];
+            }
         }
         
     }
