@@ -26,8 +26,6 @@ NSString * const baseURLString = @"https://api.themoviedb.org/";
     NSURL *baseURL = [NSURL URLWithString:baseURLString];
     NSURL *genreURL = [NSURL URLWithString:movieGenreURLString relativeToURL:baseURL];
     
-    //NSLog(genreURL.absoluteString);
-    
     // return URL
     
     return genreURL;

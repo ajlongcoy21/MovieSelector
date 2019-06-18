@@ -132,6 +132,18 @@
             }
         }
         
+        // renable buttons
+        
+        movieSelectorController.movieLoverOneButton.enabled = TRUE;
+        movieSelectorController.movieLoverTwoButton.enabled = TRUE;
+        
+        // check to see if both users selected their genres, if so let them see their movie results
+        
+        if (movieSelectorController.movieLoverOneSelections.count > 0 && movieSelectorController.movieLoverTwoSelections.count > 0)
+        {
+            movieSelectorController.viewResultsButton.hidden = FALSE;
+        }
+        
     }
 }
 /*

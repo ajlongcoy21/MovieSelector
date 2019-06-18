@@ -120,6 +120,7 @@
                     <connections>
                         <outlet property="movieLoverOneButton" destination="xPz-iu-nSS" id="PfS-Ed-pUi"/>
                         <outlet property="movieLoverTwoButton" destination="O1Y-kQ-STE" id="7zx-p6-Vzb"/>
+                        <outlet property="viewResultsButton" destination="Eqc-yV-zgW" id="OWP-It-Dcj"/>
                         <segue destination="2zE-GD-adG" kind="show" identifier="showGenreTableView" id="sm9-ED-5U6"/>
                         <segue destination="kIs-6d-bPF" kind="show" identifier="showMovieResults" id="uJ6-l8-2tC"/>
                     </connections>
@@ -186,7 +187,7 @@
             </objects>
             <point key="canvasLocation" x="2906" y="94"/>
         </scene>
-        <!--Movie Result Table View Controller-->
+        <!--MOVIE RESULTS-->
         <scene sceneID="l9B-a6-Vui">
             <objects>
                 <tableViewController id="kIs-6d-bPF" customClass="MovieResultTableViewController" sceneMemberID="viewController">
@@ -247,6 +248,7 @@
                             <outlet property="delegate" destination="kIs-6d-bPF" id="JxV-64-wqB"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="MOVIE RESULTS" id="DEi-1Z-7HV"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vz5-gl-hNS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

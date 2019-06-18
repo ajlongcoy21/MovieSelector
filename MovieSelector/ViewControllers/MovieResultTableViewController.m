@@ -75,10 +75,13 @@
         
         // reset the selections for the movie lovers
         
+        movieSelectorController.viewResultsButton.hidden = TRUE;
+        movieSelectorController.viewResultsButton.enabled = TRUE;
         movieSelectorController.movieLoverOneSelections = [NSMutableArray array];
         movieSelectorController.movieLoverTwoSelections = [NSMutableArray array];
         [movieSelectorController.movieLoverOneButton setImage:[UIImage imageNamed:@"BubbleEmpty"] forState:UIControlStateNormal];
         [movieSelectorController.movieLoverTwoButton setImage:[UIImage imageNamed:@"BubbleEmpty"] forState:UIControlStateNormal];
+        
         
     }
 }

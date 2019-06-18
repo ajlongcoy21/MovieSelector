@@ -37,7 +37,6 @@
     
     NSURL *baseURL = [NSURL URLWithString:baseURLString];
     NSURL *posterPathURL = [NSURL URLWithString:posterPathString relativeToURL:baseURL];
-    NSLog(@"poster path URL: %@", posterPathURL.absoluteString);
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLRequest *request = [NSURLRequest requestWithURL:posterPathURL cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:60];
     

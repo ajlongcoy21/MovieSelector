@@ -31,6 +31,10 @@
     _movieLoverOneButton.tag = 1;
     _movieLoverTwoButton.tag = 2;
     
+    // hide view results button
+    
+    _viewResultsButton.hidden = TRUE;
+    
     // Initialize Arrays
     
     self.movieLoverOneSelections = [NSMutableArray array];
@@ -42,6 +46,9 @@
 
 - (IBAction)movieLoverInput:(id)sender
 {
+    _movieLoverOneButton.enabled = FALSE;
+    _movieLoverTwoButton.enabled = FALSE;
+    
         // Create a URL Session and the URL needed for Movie Genre List
     
         NSURLSession *session = [NSURLSession sharedSession];
@@ -55,34 +62,56 @@
     
         NSURLSessionDownloadTask *task = [session downloadTaskWithURL:url completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error)
         {
-            // Create the data dictionary objects to pull the information from
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
             
-            NSData *data = [[NSData alloc] initWithContentsOfURL:location];
-            NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-            
-            // Create the array of dictionaries with Genre structure
-            
-            NSArray *dictionaries = [dictionary valueForKey:@"genres"];
-            
-            // For each dictionary in the array create the Genre Object and to the Genre array
-            
-            for (NSDictionary *dict in dictionaries)
+            if (error != NULL)
             {
-                Genre *genre = [Genre genreWithDictionary:dict];
-                [self.movieGenres addObject:genre];
+                [self alertMessageForUser:error.localizedDescription];
             }
             
-            // Once we retrieve the data perform the segue to the tableview
-            
-            dispatch_async(dispatch_get_main_queue(), ^
+            else
             {
-                if ([self shouldPerformSegueWithIdentifier:@"showGenreTableView" sender: sender])
+                // Create the data dictionary objects to pull the information from
+                
+                NSData *data = [[NSData alloc] initWithContentsOfURL:location];
+                NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                
+                if (httpResponse.statusCode == 401)
                 {
-                    [self performSegueWithIdentifier: @"showGenreTableView" sender: sender];
+                    [self alertMessageForUser:[dictionary valueForKey:@"status_message"]];
                 }
                 
-            });
-            
+                else if (httpResponse.statusCode == 404)
+                {
+                    [self alertMessageForUser:[dictionary valueForKey:@"status_message"]];
+                }
+                
+                else
+                {
+                    // Create the array of dictionaries with Genre structure
+                    
+                    NSArray *dictionaries = [dictionary valueForKey:@"genres"];
+                    
+                    // For each dictionary in the array create the Genre Object and to the Genre array
+                    
+                    for (NSDictionary *dict in dictionaries)
+                    {
+                        Genre *genre = [Genre genreWithDictionary:dict];
+                        [self.movieGenres addObject:genre];
+                    }
+                    
+                    // Once we retrieve the data perform the segue to the tableview
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^
+                   {
+                       if ([self shouldPerformSegueWithIdentifier:@"showGenreTableView" sender: sender])
+                       {
+                           [self performSegueWithIdentifier: @"showGenreTableView" sender: sender];
+                       }
+                       
+                   });
+                }
+            }
         }];
     
         // resume download task
@@ -92,6 +121,8 @@
 
 - (IBAction)getMovieSelections:(id)sender
 {
+    _viewResultsButton.enabled = FALSE;
+    
     NSMutableArray *movieGenreSelections = [NSMutableArray array];
     
     [movieGenreSelections addObjectsFromArray:_movieLoverOneSelections];
@@ -102,8 +133,6 @@
     NSURLSession *session = [NSURLSession sharedSession];
     NSURL *url = [MovieAPIClient discoverMovieURL: movieGenreSelections];
     
-    NSLog(@"URL: %@", url.absoluteString);
-    
     // Instantiate movieResults Array
     
     self.movieResults = [NSMutableArray array];
@@ -112,35 +141,72 @@
     
     NSURLSessionDownloadTask *task = [session downloadTaskWithURL:url completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error)
           {
-              // Create the data dictionary objects to pull the information from
               
-              NSData *data = [[NSData alloc] initWithContentsOfURL:location];
-              NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+              NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
               
-              // Create the array of dictionaries with Movie structure
-              
-              NSArray *dictionaries = [dictionary valueForKey:@"results"];
-              
-              // For each dictionary in the array create the Movie Object and add to the Movie array
-              
-              for (NSDictionary *dict in dictionaries)
+              if (error != NULL)
               {
-                  Movie *movie = [Movie movieWithDictionary:dict];
-                  [self.movieResults addObject:movie];
+                  [self alertMessageForUser:error.localizedDescription];
               }
               
-              // Once we retrieve the data perform the segue to the tableview
+              else
+              {
+                  NSData *data = [[NSData alloc] initWithContentsOfURL:location];
+                  NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                  
+                  if (httpResponse.statusCode == 401)
+                  {
+                      [self alertMessageForUser:[dictionary valueForKey:@"status_message"]];
+                  }
+                  
+                  else if (httpResponse.statusCode == 404)
+                  {
+                      [self alertMessageForUser:[dictionary valueForKey:@"status_message"]];
+                  }
+                  
+                  else
+                  {
+                      // Create the array of dictionaries with Movie structure
+
+                      long totalResults = [[dictionary valueForKey:@"total_results"] integerValue];
+                      NSArray *dictionaries = [dictionary valueForKey:@"results"];
+                      
+                      if (totalResults == 0)
+                      {
+                          dispatch_async(dispatch_get_main_queue(), ^
+                         {
+                             self.viewResultsButton.hidden = TRUE;
+                             self.movieLoverOneSelections = [NSMutableArray array];
+                             self.movieLoverTwoSelections = [NSMutableArray array];
+                             [self.movieLoverOneButton setImage:[UIImage imageNamed:@"BubbleEmpty"] forState:UIControlStateNormal];
+                             [self.movieLoverTwoButton setImage:[UIImage imageNamed:@"BubbleEmpty"] forState:UIControlStateNormal];
+                             
+                         });
+                          
+                          
+                          [self alertMessageForUser:@"There were no results for your selection of genres. Please select 1 or 2 genres to increase the chances of finding movies."];
+                      }
+                      else
+                      {
+                          // For each dictionary in the array create the Movie Object and add to the Movie array
+                          
+                          for (NSDictionary *dict in dictionaries)
+                          {
+                              Movie *movie = [Movie movieWithDictionary:dict];
+                              [self.movieResults addObject:movie];
+                          }
+                          
+                          // Once we retrieve the data perform the segue to the tableview
+                          
+                          dispatch_async(dispatch_get_main_queue(), ^
+                         {
+                             [self performSegueWithIdentifier: @"showMovieResults" sender: sender];
+                             
+                         });
+                      }
+                  }
+              }
               
-              dispatch_async(dispatch_get_main_queue(), ^
-                 {
-                     [self performSegueWithIdentifier: @"showMovieResults" sender: sender];
-                     
-                     /*for (Movie *eachMovie in self.movieResults)
-                     {
-                         [eachMovie printMovie];
-                     }*/
-                     
-                 });
           }];
     
     // resume download task
@@ -157,10 +223,12 @@
 {
     if (((UIButton *) sender).tag == 1 && _movieLoverOneSelections.count > 0 && [identifier isEqualToString:@"showGenreTableView"])
     {
+        [self alertMessageForUser:@"You already selected your movie genres. Let your fellow movie watcher select some as well :D."];
         return false;
     }
     else if (((UIButton *) sender).tag == 2 && _movieLoverTwoSelections.count > 0 && [identifier isEqualToString:@"showGenreTableView"])
     {
+        [self alertMessageForUser:@"You already selected your movie genres. Let your fellow movie watcher select some as well :D."];
         return false;
     }
     else
@@ -236,5 +304,19 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+- (void)alertMessageForUser: (NSString *) alertMessage
+{
+    NSString *message = [NSString stringWithFormat:@"%@", alertMessage];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"OOPS!" message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    //We add buttons to the alert controller by creating UIAlertActions:
+    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:nil]; //You can use a block here to handle a press on this button
+    [alertController addAction:actionOk];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+}
 
 @end
