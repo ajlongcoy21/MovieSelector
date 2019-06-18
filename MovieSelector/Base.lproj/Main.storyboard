@@ -121,6 +121,7 @@
                         <outlet property="movieLoverOneButton" destination="xPz-iu-nSS" id="PfS-Ed-pUi"/>
                         <outlet property="movieLoverTwoButton" destination="O1Y-kQ-STE" id="7zx-p6-Vzb"/>
                         <segue destination="2zE-GD-adG" kind="show" identifier="showGenreTableView" id="sm9-ED-5U6"/>
+                        <segue destination="kIs-6d-bPF" kind="show" identifier="showMovieResults" id="uJ6-l8-2tC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZXi-1X-Bf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -184,6 +185,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6N-PM-KlM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2906" y="94"/>
+        </scene>
+        <!--Movie Result Table View Controller-->
+        <scene sceneID="l9B-a6-Vui">
+            <objects>
+                <tableViewController id="kIs-6d-bPF" customClass="MovieResultTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FrR-xm-0pd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="movieCell" rowHeight="100" id="UrK-GD-1o4" customClass="MovieResultTableViewCell">
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UrK-GD-1o4" id="BeA-Zw-cul">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="unz-1m-7W4">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="ZCy-fI-bUo"/>
+                                                <constraint firstAttribute="height" constant="100" id="c6g-I4-z5r"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qTA-Cf-IIM">
+                                            <rect key="frame" x="116" y="11.5" width="278" height="23"/>
+                                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
+                                            <color key="textColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jdf-en-5Mf">
+                                            <rect key="frame" x="116" y="70" width="278" height="18"/>
+                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
+                                            <color key="textColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.44873559470000002" green="0.2004334629" blue="0.19214391710000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstItem="jdf-en-5Mf" firstAttribute="top" secondItem="qTA-Cf-IIM" secondAttribute="bottom" constant="35.5" id="37B-wz-yir"/>
+                                        <constraint firstItem="qTA-Cf-IIM" firstAttribute="top" secondItem="BeA-Zw-cul" secondAttribute="top" constant="11" id="6Sq-Tr-4YI"/>
+                                        <constraint firstItem="unz-1m-7W4" firstAttribute="leading" secondItem="BeA-Zw-cul" secondAttribute="leading" id="EvB-Qs-zxD"/>
+                                        <constraint firstItem="qTA-Cf-IIM" firstAttribute="trailing" secondItem="BeA-Zw-cul" secondAttribute="trailingMargin" id="VLL-GB-EeH"/>
+                                        <constraint firstItem="jdf-en-5Mf" firstAttribute="leading" secondItem="unz-1m-7W4" secondAttribute="trailing" constant="16" id="c7b-cN-9l0"/>
+                                        <constraint firstItem="unz-1m-7W4" firstAttribute="top" secondItem="BeA-Zw-cul" secondAttribute="top" id="cDK-7z-7q0"/>
+                                        <constraint firstItem="jdf-en-5Mf" firstAttribute="trailing" secondItem="BeA-Zw-cul" secondAttribute="trailingMargin" id="eXR-K8-IxK"/>
+                                        <constraint firstItem="qTA-Cf-IIM" firstAttribute="leading" secondItem="unz-1m-7W4" secondAttribute="trailing" constant="16" id="oR0-MB-9Xb"/>
+                                        <constraint firstAttribute="bottom" secondItem="unz-1m-7W4" secondAttribute="bottom" id="sOc-R2-MHb"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="MoviePosterImage" destination="unz-1m-7W4" id="3Qt-QF-frF"/>
+                                    <outlet property="MovieReleseDate" destination="jdf-en-5Mf" id="ScS-sJ-wpa"/>
+                                    <outlet property="MovieTitle" destination="qTA-Cf-IIM" id="LQa-IO-EB4"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kIs-6d-bPF" id="gzx-ld-wov"/>
+                            <outlet property="delegate" destination="kIs-6d-bPF" id="JxV-64-wqB"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vz5-gl-hNS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2085.507246376812" y="880.58035714285711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XZc-36-NdN">

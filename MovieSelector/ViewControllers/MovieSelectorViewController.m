@@ -11,6 +11,7 @@
 #import "Genre.h"
 #import "Movie.h"
 #import "GenreTableViewController.h"
+#import "MovieResultTableViewController.h"
 
 @interface MovieSelectorViewController ()
 
@@ -132,10 +133,12 @@
               
               dispatch_async(dispatch_get_main_queue(), ^
                  {
-                     for (Movie *eachMovie in self.movieResults)
+                     [self performSegueWithIdentifier: @"showMovieResults" sender: sender];
+                     
+                     /*for (Movie *eachMovie in self.movieResults)
                      {
                          [eachMovie printMovie];
-                     }
+                     }*/
                      
                  });
           }];
@@ -196,6 +199,13 @@
              genreTableViewController.genres = self.movieGenres;
              genreTableViewController.movieLover = [NSNumber numberWithInt:2];
          }
+         
+     }
+     
+     if([segue.identifier isEqualToString:@"showMovieResults"])
+     {
+         MovieResultTableViewController *movieTableViewController = segue.destinationViewController;
+         movieTableViewController.movieResults = self.movieResults;
          
      }
 }
