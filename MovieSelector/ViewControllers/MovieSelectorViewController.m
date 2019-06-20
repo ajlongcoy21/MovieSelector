@@ -67,6 +67,8 @@
             if (error != NULL)
             {
                 [self alertMessageForUser:error.localizedDescription];
+                self.movieLoverOneButton.enabled = TRUE;
+                self.movieLoverTwoButton.enabled = TRUE;
             }
             
             else
@@ -79,11 +81,15 @@
                 if (httpResponse.statusCode == 401)
                 {
                     [self alertMessageForUser:[dictionary valueForKey:@"status_message"]];
+                    self.movieLoverOneButton.enabled = TRUE;
+                    self.movieLoverTwoButton.enabled = TRUE;
                 }
                 
                 else if (httpResponse.statusCode == 404)
                 {
                     [self alertMessageForUser:[dictionary valueForKey:@"status_message"]];
+                    self.movieLoverOneButton.enabled = TRUE;
+                    self.movieLoverTwoButton.enabled = TRUE;
                 }
                 
                 else
@@ -147,6 +153,8 @@
               if (error != NULL)
               {
                   [self alertMessageForUser:error.localizedDescription];
+                  self.movieLoverOneButton.enabled = TRUE;
+                  self.movieLoverTwoButton.enabled = TRUE;
               }
               
               else
@@ -157,11 +165,15 @@
                   if (httpResponse.statusCode == 401)
                   {
                       [self alertMessageForUser:[dictionary valueForKey:@"status_message"]];
+                      self.movieLoverOneButton.enabled = TRUE;
+                      self.movieLoverTwoButton.enabled = TRUE;
                   }
                   
                   else if (httpResponse.statusCode == 404)
                   {
                       [self alertMessageForUser:[dictionary valueForKey:@"status_message"]];
+                      self.movieLoverOneButton.enabled = TRUE;
+                      self.movieLoverTwoButton.enabled = TRUE;
                   }
                   
                   else
