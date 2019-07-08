@@ -49,13 +49,25 @@
     
     // Configure the cell...
     
+    //Movie *movie = [self.movieResults objectAtIndex:indexPath.row];
+    
+    //cell.MovieTitle.text = movie.title;
+    //cell.MovieReleseDate.text = movie.releaseDate;
+    //cell.moviePosterImageString = movie.posterPath;
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(MovieResultTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Configure the cell...
+    
     Movie *movie = [self.movieResults objectAtIndex:indexPath.row];
     
     cell.MovieTitle.text = movie.title;
     cell.MovieReleseDate.text = movie.releaseDate;
     cell.moviePosterImageString = movie.posterPath;
     
-    return cell;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
